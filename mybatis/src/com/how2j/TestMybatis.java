@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.how2j.pojo.Category;
+import com.how2j.pojo.Orders;
+import com.how2j.pojo.OrdersItem;
 import com.how2j.pojo.Product;
 
 public class TestMybatis {
@@ -20,11 +22,21 @@ public class TestMybatis {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session=sqlSessionFactory.openSession();
         
-        // 多对一关系
-        List<Product> ps = session.selectList("listProduct");
-        for(Product p : ps) {
-        	System.out.println( p +" 对应的分类是 \\t " + p.getCategory());
+        // 多对多关系
+        List<Orders> os =  session.selectList("listOrders");
+        for (Orders o : os) {
+        	System.out.println(o.getCode());
+        	List<OrdersItem> ois = o.getOrderItems();
+        	for (OrdersItem oi : ois) {
+        		System.out.format("\t%s\t%f\t%d%n", oi.getProduct().getName(),oi.getProduct().getPrice(),oi.getNumber());
+        	}
         }
+        
+//        // 多对一关系
+//        List<Product> ps = session.selectList("listProduct");
+//        for(Product p : ps) {
+//        	System.out.println( p +" 对应的分类是 \\t " + p.getCategory());
+//        }
         
         
         //  一对多关系
@@ -38,11 +50,11 @@ public class TestMybatis {
 //        }        
         
         // 查询
-//        List<Category> cs=session.selectList("listCategory");
+//        List<Category> cs =session.selectList("listCategory");
 //        for (Category c : cs) {
 //            System.out.println(c.getName());
 //        }
-        //模糊查询
+        // 模糊查询
 //        List<Category> cs = session.selectList("listCategoryByName", "1");
 //        for (Category c : cs) {
 //        	System.out.println(c.getName());
