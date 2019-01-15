@@ -128,7 +128,7 @@
 
       
       
-      <Context docBase="springMVC" path="/springMVC" reloadable="true" source="org.eclipse.jst.jee.server:springMVC"/><Context docBase="curd" path="/" reloadable="true" source="org.eclipse.jst.jee.server:curd"/></Host>
+      <Context docBase="springMVC" path="/springMVC" reloadable="true" source="org.eclipse.jst.jee.server:springMVC"/><Context docBase="curd" path="/" reloadable="true" source="org.eclipse.jst.jee.server:curd"/><Context docBase="ssm" path="/ssm" reloadable="true" source="org.eclipse.jst.jee.server:ssm"/></Host>
     </Engine>
   </Service>
 </Server>
