@@ -7,8 +7,8 @@
         <insert id="addOrdersItem" parameterType="OrdersItem">
             insert into orders_item values(null,#{order.id},#{product.id},#{number})
         </insert>   
-        <insert id="deleteOrdersItem" parameterType="OrdersItem">
+        <delete id="deleteOrdersItem" parameterType="OrdersItem">
             delete from orders_item where oid = #{order.id} and pid = #{product.id}
-        </insert>   
+        </delete>   
      
     </mapper>

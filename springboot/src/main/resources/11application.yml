@@ -1,0 +1,13 @@
+spring:
+    mvc:
+        view:
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
+    jpa:
+        properties:
+            hibernate:
+                hbm2ddl:
+                    auto: update
+server:
+    port: 9999
+    context-path: /
